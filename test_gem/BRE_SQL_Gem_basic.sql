@@ -12,7 +12,7 @@
     SELECT
         *,
         CASE
-            WHEN {{ final_condition }} THEN {{ rule_output_value }}
+            WHEN {{ final_condition }} THEN '{{ rule_output_value }}'
             ELSE NULL -- Default value if the condition is not met
         END AS {{ output_column }}
     FROM {{ input_table }}

@@ -7,7 +7,7 @@ This file provides guidance to Gemini Code (gemini.ai/code) when working with co
 I want you to create a custom Prophecy SQL gem called `BRE_SQL_Gem_basic` - a Transform gem that allows creation of business rules. 
 
 The business user will:
-1) Input column - select an existing input column, this will need to be dynamically generated based on the input port that is selected, which the gem logic will need to incorporate to detect the name of the table (dynamically generated from the input table that is wired into the gem as input). and then allow the specification of the column names from that table.
+1) Input column - select an existing input column, this will need to be dynamically generated based on the input port that is selected, which the gem logic will need to incorporate to detect the name of the table (dynamically generated from the input table that is wired into the gem as input). and then allow the specification of the column names from that table. There should not be a place for the user to manually enter an input_table as this will be dictated by the input that has been wired up to the gem. Also the input_column should be clickable/selectable from the input ports, not "typed" 
 2) Output column - Once the input either select and existing OUTPUT column or specify an new OUTPUT column that doesn't exist.
 3) Define the logic for the business rule in plain text, this should be done in two separate inputs. The "If clause", which will contain the logic, and then the value that should be output into the output column (that was specified in point 2 above)
 
