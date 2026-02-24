@@ -1,0 +1,41 @@
+﻿Gem Design Principles
+
+
+These principles govern the design and behavior of all Prophecy gems, ensuring a consistent experience for all users, regardless of their technical background or which engineering team developed the gem. 
+Principles
+1. Abstract as much as possible
+A gem's primary role is to abstract complex data operations. Gems must be designed to be as simple as possible and accessible to the widest audience.
+* The default view of any gem must present the most common use case with minimal inputs.
+* Operations that require additional logic for secondary use cases should be marked as "Advanced" and placed in a smaller/dedicated interface.
+* Any requirement for writing custom SQL expressions or code should open the SQL Statement gem. This clearly segments standard operations from expert-level, custom coding. [a][b]
+2. Provide defaults 
+Where an operation is complex, the gem should provide sensible, pre-configured defaults to guide the user and minimize necessary input.
+For example, update the Aggregate gem to use a set of default aggregations, rather than the visual expression builder. This way, users are limited to just the set of aggregation functions, rather than the whole set of SQL functions.
+Then, provide a way for users to create custom SQL in a SQL statement gem if they want to do advanced aggregations using SQL expressions/cases/filters/etc.
+3. Apply consistent styles
+
+
+The layout, styling, and organization of fields must be standardized across all gems to minimize the cognitive load of learning new components.
+* All mandatory configuration fields must be contained within the same primary tab or initial view. Users should never have to search multiple tabs to complete a basic gem configuration.
+* All fields—both required and optional—must be highly visible and utilize standardized styling (asterisks) to clearly denote their status. See current Deduplicate gem for an idea of a not-visible field.
+* Design the UI to utilize space efficiently. Avoid excessive padding or margin that introduces unnecessary whitespace.
+* No gem should default to the code view (like the current Limit gem) unless its primary purpose is code execution (such as the SQLStatement gem).
+4. Be mindful when choosing UI components 
+UI components should be chosen based on the number of options available to streamline the user's decision-making process.
+*  If a field has only one possible, non-configurable option, it should not be presented as a dropdown menu. Instead, the single option should be displayed as a non-editable, grayed-out, and prefilled field, confirming the selection without requiring a click.
+* All context-specific guidance, explanatory text, and definitions for individual fields should be provided via Tooltips (hover-text) and not through large, static Markdown boxes. Markdown boxes should be reserved only for critical, cross-gem warnings or major structural announcements.
+5. Summarize and link documentation
+Every gem must be a self-documenting component with high-quality, professional text.
+* Each gem must include a concise, one-liner description visible in the gem.
+* Each gem must provide a prominent, accessible link to its corresponding documentation.
+* All gem UI text should be reviewed by a PM or technical writer.
+
+
+To be considered
+The following points require further discussion to establish a strategic direction.
+* Can we improve the visual expression builder? It’s quite difficult to use; writing direct SQL expressions is easier. There is choice overload in the expression builder — it needs to be scoped per gem.[c]
+* Do we design gems to be immediately usable by completely new "Pro Edition" users, or do we prioritize familiarity and functionality for experienced Alteryx/data flow users?
+* How do we systematically decide which gems are essential enough to warrant maintaining both a full Visual UI and a Code View?
+[a]Add examples good/bad
+[b]no
+[c]I agree, this was one of my pain points when I went from using Alteryx to Prophecy-- it's more clicks than I was used to. The "Ask AI" feature helped me though
